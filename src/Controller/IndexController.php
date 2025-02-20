@@ -1,12 +1,16 @@
 <?php
+
 namespace App\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
 class IndexController extends AbstractController
 {
-public function home()
-{
-return new Response('<h1>Ma première page Symfony</h1>');
+    #[Route('/{name}', name: 'home')]
+    public function home(string $name): Response
+    {
+        return $this->render('index.html.twig', ['name' => $name]);
+    }
 }
-}
-?>
